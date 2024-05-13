@@ -1,0 +1,27 @@
+@media (max-width: 900px) {
+    header {
+        height: auto;
+        padding: 10px 0 10px 0;
+        text-align: center;
+    }
+
+    .user-info-box {
+        flex-direction: column;
+    }
+
+    .user-data-info {
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+@media (max-width: 550px) {
+    .user-info-box {
+        align-items: center;
+    }
+
+    .user-data-info {
+        flex-direction: column;
+        padding: 0 0 0 40px;
+    }
+}

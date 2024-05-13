@@ -1,0 +1,13 @@
+@media (max-width: 550px) {
+    footer {
+        flex-direction: column;
+        height: auto;
+        padding: 20px 0 0 0;
+    }
+
+    footer .supported-by-step-it-academy {
+        margin-top: 0;
+    }
+}
+
+

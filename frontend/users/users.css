@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: turquoise;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+body * {
+    box-sizing: border-box;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    background: black;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 40px;
+    color: whitesmoke;
+}
+
+.user-info-box {
+    display: flex;
+    width: 95%;
+    background: teal;
+    padding: 15px;
+    border-radius: 15px;
+    gap: 20px;
+}
+
+.user-info-box img {
+    width: 250px;
+    height: 250px;
+    border-radius: 5px;
+}
+
+.user-data-info {
+    display: flex;
+    gap: 40px;
+    font-size: 18px;
+}
+
+.user-data-info .user-info {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    gap: 20px;
+}
+
+.user-data-info .user-info h2 {
+    margin: 20px 0 0 0;
+}
+
+.user-data-info .user-info p {
+    margin: 0;
+}
+
+.posts{
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 20px 0;
+    border-bottom: 3px solid black;
+    padding: 0 0 20px;
+    border-radius: 15px;
+}
+
+.posts div {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    gap: 15px;
+    background: teal;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 18px;
+}
+
+.posts div h3 {
+    margin: 0;
+}
