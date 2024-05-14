@@ -65,4 +65,4 @@ class App {
 const application = new App();
 
 application.getUsers().then((users) => application.generateUsersLinks(users));
-application.generateRandomUserAvatar();
+
