@@ -8,6 +8,13 @@ class App {
         return response;
     }
 
+    async getPosts() {
+        const data = await fetch("https://jsonplaceholder.typicode.com/posts");
+        const response = await data.json();
+
+        return response;
+    }
+
     generateUsersLinks(users) {
         for (const user of users) {
             const a = document.createElement("a");
@@ -23,6 +30,32 @@ class App {
 
             document.body.appendChild(userContainer);
         }
+
+        const title = document.createElement("h2");
+        title.classList.add("post-title")
+        title.textContent = "Posts";
+
+        document.body.appendChild(title);
+    }
+
+    generatePostLinks(posts) {
+        const postBox = document.createElement("div");
+        postBox.classList.add("post-box");
+
+        for (const post of posts) {
+            const aPost = document.createElement("a");
+            aPost.href = `frontend/post/${post.title.replace(" ", "-")}.html`;
+            aPost.textContent = post.title.toUpperCase();
+
+            const postContainer = document.createElement("div");
+            postContainer.classList.add("post-container");
+
+            postContainer.appendChild(aPost);
+            
+            postBox.appendChild(postContainer);
+            document.body.appendChild(postBox);
+        }
+
         const footer = document.createElement("footer");
 
         const copyrightsBox = document.createElement("div");
@@ -65,4 +98,4 @@ class App {
 const application = new App();
 
 application.getUsers().then((users) => application.generateUsersLinks(users));
-
+application.getPosts().then((posts) => application.generatePostLinks(posts));

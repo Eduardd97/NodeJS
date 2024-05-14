@@ -19,28 +19,31 @@ async function generateUsersPages() {
 
         const userIcon = await generateRandomUserAvatar();
 
-        const dataPosts = await generateUserPosts();
-        const postsContent = dataPosts.map((post) => {
-            const { userId, title, body } = post;
+        const responsePosts = await generateUserPosts();
+        const postsContent = responsePosts
+            .map((post) => {
+                const { userId, title, body } = post;
 
-            let titlePost = "";
-            let postBody = "";
+                let titlePost = "";
+                let postBody = "";
 
-            if (userId === id) {
-                titlePost = title;
-                postBody = body;
-            } else {
-                const error = "У пользователя нету постов";
-                return``
-            }
+                if (userId === id) {
+                    titlePost = title;
+                    postBody = body;
+                } else {
+                    const error = "У пользователя нету постов";
+                    return ``;
+                }
 
-            return `
+                return `
              <div>
-                <h3>${titlePost.charAt(0).toUpperCase() + titlePost.slice(1)}</h3>
+                <h3>${
+                    titlePost.charAt(0).toUpperCase() + titlePost.slice(1)
+                }</h3>
                 <span>${postBody}</span>
             </div>`;
-        }).join("");
-        
+            })
+            .join("");
 
         const content = `
             <!DOCTYPE html>
@@ -88,14 +91,16 @@ async function generateUsersPages() {
             </body>
         `;
 
-        fs.appendFile(fileName, content, (err) => console.log(err));
+        fs.writeFile(fileName, content, (err) => console.log(err));
     });
+
+    return response;
 }
 
 generateUsersPages();
 
 async function generateRandomUserAvatar() {
-    const data = await fetch("./avatars.json")
+    const data = await fetch("http://127.0.0.1:5500/avatars.json")
         .then((response) => response.json())
         .catch((error) => {
             console.error("Error loading avatar:", error);
@@ -109,14 +114,29 @@ async function generateRandomUserAvatar() {
 }
 
 async function generateUserPosts() {
-    const data = await fetch("https://jsonplaceholder.typicode.com/posts")
-        .then((response) => response.json())
-        .catch((error) => {
-            console.error("Error loading posts:", error);
-            return error;
-        });
+    const data = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const response = await data.json();
 
-    return data;
+    response.forEach(async (post) => {
+        const { userId, title, body } = post;
+        const fileTitle = `frontend/post/${title.replace(" ", "-")}.html`;
+
+        const responseUserPage = await generateUsersPages();
+
+        const content = `
+        <head>
+            <link rel="stylesheet" href="./post.css">
+        </head>
+        <body>
+            <div>
+                <span>${title.toUpperCase()}</span>
+                <p>${body}</p>
+            </div>
+        </body>
+        `;
+
+        fs.writeFile(fileTitle, content, (err) => console.log(err));
+    });
+
+    return response;
 }
-
-generateUserPosts();
