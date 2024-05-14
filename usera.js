@@ -50,7 +50,7 @@ class App {
     }
 
     async generateRandomUserAvatar(userContainer) {
-        const data = await fetch("http://127.0.0.1:5500/avatars.json").then((response) =>
+        const data = await fetch("./avatars.json").then((response) =>
             response.json()
         );
 

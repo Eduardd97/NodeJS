@@ -95,7 +95,7 @@ async function generateUsersPages() {
 generateUsersPages();
 
 async function generateRandomUserAvatar() {
-    const data = await fetch("http://127.0.0.1:5500/avatars.json")
+    const data = await fetch("./avatars.json")
         .then((response) => response.json())
         .catch((error) => {
             console.error("Error loading avatar:", error);
