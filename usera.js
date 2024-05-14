@@ -11,7 +11,7 @@ class App {
     generateUsersLinks(users) {
         for (const user of users) {
             const a = document.createElement("a");
-            a.href = `users/${user.name.replace(" ", "-")}.html`;
+            a.href = `frontend/users/${user.name.replace(" ", "-")}.html`;
             a.textContent = user.name;
 
             const userContainer = document.createElement("div");
