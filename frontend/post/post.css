@@ -27,6 +27,6 @@ div p {
 
 @media (max-width: 500px) {
     div {
-        font-size: 65px;
+        font-size: 35px;
     }
 }

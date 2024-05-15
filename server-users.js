@@ -122,7 +122,11 @@ async function generateUserPosts() {
         const fileTitle = `frontend/post/${title.replace(" ", "-")}.html`;
 
         const content = `
+        <!DOCTYPE html>
+        <html lang="en">
         <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="./post.css">
         </head>
         <body>
