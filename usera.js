@@ -32,15 +32,19 @@ class App {
         }
 
         const title = document.createElement("h2");
-        title.classList.add("post-title")
+        title.classList.add("post-title");
         title.textContent = "Posts";
 
         document.body.appendChild(title);
     }
 
     generatePostLinks(posts) {
+        const borderStylePostBox = document.createElement("div");
+        borderStylePostBox.classList.add("border-style-post-box");
         const postBox = document.createElement("div");
         postBox.classList.add("post-box");
+
+        borderStylePostBox.appendChild(postBox);
 
         for (const post of posts) {
             const aPost = document.createElement("a");
@@ -51,9 +55,9 @@ class App {
             postContainer.classList.add("post-container");
 
             postContainer.appendChild(aPost);
-            
+
             postBox.appendChild(postContainer);
-            document.body.appendChild(postBox);
+            document.body.appendChild(borderStylePostBox);
         }
 
         const footer = document.createElement("footer");
@@ -99,5 +103,7 @@ const application = new App();
 
 application.getUsers().then((users) => application.generateUsersLinks(users));
 setTimeout(() => {
-    application.getPosts().then((posts) => application.generatePostLinks(posts));
+    application
+        .getPosts()
+        .then((posts) => application.generatePostLinks(posts));
 }, 1000);
