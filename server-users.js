@@ -82,7 +82,7 @@ async function generateUsersPages() {
                 </div>
 
                 <div>
-                    <h2>Posts</h2>
+                    <h2 class="users-post-title">Posts</h2>
                 </div>
 
                 <div class="posts">
@@ -121,8 +121,6 @@ async function generateUserPosts() {
         const { userId, title, body } = post;
         const fileTitle = `frontend/post/${title.replace(" ", "-")}.html`;
 
-        const responseUserPage = await generateUsersPages();
-
         const content = `
         <head>
             <link rel="stylesheet" href="./post.css">
@@ -130,7 +128,7 @@ async function generateUserPosts() {
         <body>
             <div>
                 <span>${title.toUpperCase()}</span>
-                <p>${body}</p>
+                <p>${body.charAt(0).toUpperCase() + body.slice(1)}</p>
             </div>
         </body>
         `;
